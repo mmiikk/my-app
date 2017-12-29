@@ -1,0 +1,50 @@
+
+<mat-grid-list cols="2" >
+  <mat-grid-tile aria-rowspan="1" aria-colspan="1">
+    <mat-card class="matcard">
+        <mat-card-title>element</mat-card-title>
+            <div>
+                <label>name:
+                  <input [(ngModel)]="element.name" placeholder="name">
+                </label>
+              </div>
+              <ul class="elements">
+                <li *ngFor="let element of elements"
+                  (click)="onSelect(element)">
+                  <span class="badge">{{element.id}}</span> {{element.name}}
+                </li>
+              </ul>
+              <amexio-btn [label]="'label'" [type]="'primary'" [tooltipMessage]="'tooltipMessage'" [size]="'small'"></amexio-btn>
+              <amexio-btn [label]="'Primary'" [type]="'primary'" [tooltipMessage]="'Primary Button'"></amexio-btn>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile aria-rowspan="1" aria-colspan="2">
+      <mat-card class="matcard">
+          <mat-card-title>element</mat-card-title><div class="example-container" >
+              <mat-card-content >
+
+               <mat-table #table [dataSource]="dataSource" [ngStyle]="{'max-height.px': 500}" >
+                  <ng-container matColumnDef="id">
+                      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="position_X">
+                        <mat-header-cell *matHeaderCellDef> Position X </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.position_X}} </mat-cell>
+                      </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row,$event)" [class.mattablerow-selected]="row.selected" class="mattablerow"></mat-row>
+               </mat-table>
+              </mat-card-content>
+</div>
+      </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

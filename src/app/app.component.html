@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <span>Thin Client Configurator</span>
+
+</mat-toolbar>
+<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')" >
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+      <p><button mat-button (click)="close('toggle button')">Close</button></p>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-elements></app-elements>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
