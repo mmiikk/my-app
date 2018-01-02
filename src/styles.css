@@ -1,12 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 
 body {
   margin: 0 !important;
 }
-
+.container-fluid{
+  padding:0 !important;
+  height:100%;
+}
 .mat-drawer-container{
   width: 100% !important;
   height: calc(100% - 64px) !important;
@@ -14,15 +17,21 @@ body {
 }
 
 .mattablerow-selected{
-  background: #7b1fa2;
+  background: #3f51b5;
+  color:rgba(255,255,255,.87);
+}
+.mattablerow-selected > .mat-cell{
+  background: #3f51b5;
+  color:rgba(255,255,255,.87);
 }
 .mattablerow{
   cursor: pointer;
   user-select: none;
 }
 .matcard{
-  width: 90%;
-  height: 90%
+  width: 100%;
+  height: 100%;
+  margin:20px;
 }
 
 .example-container {

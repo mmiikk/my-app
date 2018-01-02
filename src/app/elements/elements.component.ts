@@ -1,6 +1,6 @@
 import { Element } from './../element';
 import { ELEMENTS } from '../mock-elements';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 
 
@@ -17,11 +17,13 @@ export class ElementsComponent implements OnInit {
     name: 'dupa',
     position_X: 1,
     position_Y: 1,
-    selected: false
+    selected: false,width: 300,height: 300,showBorder: false,showName: false,position_name: 'Bottom',onTop: false
+    ,font: {  id: 1,  station_ID: 1,  size: 12,  bold: true,  italic: false,  unterline: false,  centeralign: false  }
+
   };
   elements = ELEMENTS;
 
-  displayedColumns = ['id', 'name', 'position_X'];
+  displayedColumns = ['id', 'name', 'position_X', 'position_Y'];
   dataSource = new MatTableDataSource<Element>(ELEMENTS);
 
   constructor() {  }
@@ -36,6 +38,8 @@ export class ElementsComponent implements OnInit {
 
     console.log(event);
   }
+
+
 
   clearSelected(elements: Element[]): Element[] {
     elements.forEach(element => {
