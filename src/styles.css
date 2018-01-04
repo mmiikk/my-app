@@ -29,11 +29,14 @@ body {
   user-select: none;
 }
 .matcard{
-  width: 100%;
-  height: 100%;
   margin:20px;
 }
-
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-full-width{
+  margin: 0px 10px;
+}
 .example-container {
   display: flex;
   flex-direction: column;

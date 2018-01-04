@@ -5,7 +5,20 @@
         <mat-icon>more_vert</mat-icon>
     </button>
     <span>Thin Client Configurator</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" >
+        <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="No of elements in table" value="5">
+          </mat-form-field>
 
+      </mat-menu>
 </mat-toolbar></nav>
 <mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')" >
   <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>

@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
 import { MatTableModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
 import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
 
 
@@ -32,7 +34,9 @@ import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
     MatGridListModule,
     MatCardModule,
     MatTableModule,
-    AmexioWidgetModule
+    AmexioWidgetModule,
+    MatMenuModule,
+    MatInputModule
 
 
   ],

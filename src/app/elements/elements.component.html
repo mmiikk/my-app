@@ -1,7 +1,7 @@
       <mat-card class="matcard">
           <mat-card-title>element</mat-card-title><div class="example-container" >
               <mat-card-content >
-                <mat-table #table [ngStyle]="{'max-height': 'calc(100% - 64px - 20px - 2*24px - 52px)'}" >
+                <mat-table #table>
                   <ng-container matColumnDef="id">
                       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
 
@@ -26,7 +26,7 @@
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
                </mat-table>
-               <mat-table #table [dataSource]="dataSource" style="max-height: calc((100vh ) / 2 - 64px - 24px*2 - 20px*2 - 52px - 48px - 64px);" >
+               <mat-table #table [dataSource]="dataSource" style="max-height: 200px;" >
                   <ng-container matColumnDef="id">
                       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
                       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
