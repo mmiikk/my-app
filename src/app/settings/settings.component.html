@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Settings</h1>
+<div mat-dialog-content>
+  <form novalidate>
+    <mat-form-field class="example-full-width">
+      <input matInput name="noOfRowsInTable" [(ngModel)]="settings.noOfRowsInTable" maxlength="256" placeholder="Number of elements in Table" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+
+    </mat-form-field>
+  </form>
+
+  <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true"  cdkFocusInitial (click)="save()">Save</button>
+    </mat-dialog-actions>
+
+</div>

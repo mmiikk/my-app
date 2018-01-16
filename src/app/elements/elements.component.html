@@ -1,7 +1,7 @@
       <mat-card class="matcard">
           <mat-card-title>element</mat-card-title><div class="example-container" >
               <mat-card-content >
-                <mat-table #table>
+                <mat-table #table class="mattableheader">
                   <ng-container matColumnDef="id">
                       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
 
@@ -22,11 +22,18 @@
                         <mat-header-cell *matHeaderCellDef> Position Y </mat-header-cell>
 
                       </ng-container>
+                      <ng-container matColumnDef="width">
+                        <mat-header-cell *matHeaderCellDef> Width </mat-header-cell>
 
+                      </ng-container>
+                      <ng-container matColumnDef="height">
+                        <mat-header-cell *matHeaderCellDef> Height </mat-header-cell>
+
+                      </ng-container>
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
                </mat-table>
-               <mat-table #table [dataSource]="dataSource" style="max-height: 200px;" >
+               <mat-table #table [dataSource]="dataSource" [ngStyle]="{ 'max-height': settings.noOfRowsInTable * 48+ 'px' }">
                   <ng-container matColumnDef="id">
                       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
                       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -47,11 +54,20 @@
                         <mat-header-cell *matHeaderCellDef> Position Y </mat-header-cell>
                         <mat-cell *matCellDef="let element"> {{element.position_Y}} </mat-cell>
                       </ng-container>
-
+                      <ng-container matColumnDef="width">
+                        <mat-header-cell *matHeaderCellDef> Width </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.width}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="height">
+                        <mat-header-cell *matHeaderCellDef> Height </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.height}} </mat-cell>
+                      </ng-container>
                     <mat-header-row *matHeaderRowDef="displayedColumns" style="display:none;" ></mat-header-row>
                     <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row,$event)" [class.mattablerow-selected]="row.selected" class="mattablerow"></mat-row>
                </mat-table>
+
               </mat-card-content>
 </div>
+
       </mat-card>
 

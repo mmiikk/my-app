@@ -15,7 +15,9 @@ body {
   height: calc(100% - 64px) !important;
   position: fixed !important;
 }
-
+.mattableheader{
+  overflow-y:hidden !important;
+}
 .mattablerow-selected{
   background: #3f51b5;
   color:rgba(255,255,255,.87);
@@ -27,6 +29,13 @@ body {
 .mattablerow{
   cursor: pointer;
   user-select: none;
+}
+.row{
+  margin-left:0  !important;
+  margin-right:0 !important;
+}
+.mat-button-toggle-checked{
+  background: #3f51b5 !important;
 }
 .matcard{
   margin:20px;
@@ -44,4 +53,7 @@ body {
 .mat-table {
   overflow: auto;
 overflow-y: scroll;
+}
+.settingsLabel label{
+  padding: 0;
 }

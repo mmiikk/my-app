@@ -15,14 +15,19 @@ import { MatCardModule } from '@angular/material';
 import { MatTableModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
-import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
-
+import { SettingsComponent } from './settings/settings.component';
+import { MatDialogModule } from '@angular/material';
+import { MatButtonToggleModule } from '@angular/material';
+import { ValueComponent } from './value/value.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ElementsComponent
+    ElementsComponent,
+    SettingsComponent,
+    ValueComponent
   ],
+  exports: [  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -34,14 +39,15 @@ import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
     MatGridListModule,
     MatCardModule,
     MatTableModule,
-    AmexioWidgetModule,
     MatMenuModule,
-    MatInputModule
-
-
+    MatInputModule,
+    MatDialogModule,
+    MatButtonToggleModule
   ],
-  providers: [CommonHttpService],
+  entryComponents: [
+    SettingsComponent
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

@@ -1,7 +1,12 @@
+import { ElementService } from './../element.service';
+import { SettingsService } from './../settings.service';
 import { Element } from './../element';
 import { ELEMENTS } from '../mock-elements';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Settings } from './../settings';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -10,7 +15,7 @@ import {MatTableDataSource} from '@angular/material';
   templateUrl: './elements.component.html',
   styleUrls: ['./elements.component.css']
 })
-export class ElementsComponent implements OnInit {
+export class ElementsComponent implements OnInit, OnDestroy {
   element: Element = {
     id: 1,
     station_ID: 1,
@@ -22,19 +27,31 @@ export class ElementsComponent implements OnInit {
 
   };
   elements = ELEMENTS;
-
-  displayedColumns = ['id', 'name', 'position_X', 'position_Y'];
+  subscriptionSettings: Subscription;
+  subscriptionElement: Subscription;
+  settings: Settings;
+  displayedColumns = ['id', 'name', 'position_X', 'position_Y', 'width', 'height'];
   dataSource = new MatTableDataSource<Element>(ELEMENTS);
 
-  constructor() {  }
+  constructor(private settingsService: SettingsService, private elementService: ElementService) {
+    this.subscriptionSettings = settingsService.message$.subscribe(
+      message => { this.settings = message; }
+    );
+    this.subscriptionElement = elementService.message$.subscribe(
+      message => { this.element = message; }
+    );
+  }
+
 
   ngOnInit() {
 
   }
+  ngOnDestroy() { }
+
 
   onSelect(element: Element, event): void {
     if(event.ctrlKey){ element.selected = !element.selected; }
-    else {  this.clearSelected(this.dataSource.data); element.selected = !element.selected; }
+    else {  this.clearSelected(this.dataSource.data); element.selected = !element.selected; this.elementService.sendMessage(element); console.log(element); }
 
     console.log(event);
   }

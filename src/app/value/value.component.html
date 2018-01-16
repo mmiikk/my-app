@@ -1,0 +1,23 @@
+<mat-card class="matcard">
+  <div class="example-container" >
+      <mat-card-content >
+        <mat-button-toggle-group multiple>
+          <mat-button-toggle checked="{{element.font.centeralign}}" (click)="toggle($event);">
+            <mat-icon>format_align_center</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle checked="{{element.font.bold}}">
+            <mat-icon>format_bold</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle checked="{{element.font.italic}}">
+            <mat-icon>format_italic</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle checked="{{element.font.unterline}}">
+            <mat-icon>format_underlined</mat-icon>
+          </mat-button-toggle>
+
+        </mat-button-toggle-group>
+      </mat-card-content>
+    </div>
+
+</mat-card>
+
