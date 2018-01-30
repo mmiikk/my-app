@@ -1,21 +1,43 @@
 <mat-card class="matcard">
   <div class="example-container" >
       <mat-card-content >
-        <mat-button-toggle-group multiple>
-          <mat-button-toggle checked="{{element.font.centeralign}}" (click)="toggle($event);">
-            <mat-icon>format_align_center</mat-icon>
-          </mat-button-toggle>
-          <mat-button-toggle checked="{{element.font.bold}}">
-            <mat-icon>format_bold</mat-icon>
-          </mat-button-toggle>
-          <mat-button-toggle checked="{{element.font.italic}}">
-            <mat-icon>format_italic</mat-icon>
-          </mat-button-toggle>
-          <mat-button-toggle checked="{{element.font.unterline}}">
-            <mat-icon>format_underlined</mat-icon>
-          </mat-button-toggle>
+        <div class="button-row"><mat-list></mat-list>
+            <form class="">
+                <mat-form-field class="">
+                    <input matInput placeholder="Name" value="{{element.name}}">
+                </mat-form-field>
+            </form>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="button-row">
+            <button mat-raised-button color="{{element.font.centeralign ? 'primary' : ''}}" (click)="toggleAlignCenter();"><mat-icon>format_align_center</mat-icon></button>
+            <button mat-raised-button color="{{element.font.bold ? 'primary' : ''}}" (click)="toggleBold();"><mat-icon>format_bold</mat-icon></button>
+            <button mat-raised-button color="{{element.font.italic ? 'primary' : ''}}" (click)="toggleItalic();"><mat-icon>format_italic</mat-icon></button>
+            <button mat-raised-button color="{{element.font.unterline ? 'primary' : ''}}" (click)="toggleUnderline();"><mat-icon>format_underlined</mat-icon></button>
+            <mat-form-field>
+              <mat-select placeholder="Font Size" [(ngModel)]="element.font.size">
+                <mat-option *ngFor="let font of [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 25, 30, 36, 48, 56, 72]" [value]="font">
+                  {{ font }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="button-row">
+          <form class="example-form">
+            <mat-form-field class="">
+              <input matInput placeholder="Position X" value="{{element.position_X}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+            </mat-form-field><mat-form-field class="">
+              <input matInput placeholder="Position Y" value="{{element.position_Y}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+            </mat-form-field><mat-form-field class="">
+              <input matInput placeholder="Width" value="{{element.width}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+            </mat-form-field><mat-form-field class="">
+              <input matInput placeholder="Height" value="{{element.height}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+            </mat-form-field>
 
-        </mat-button-toggle-group>
+          </form>
+        </div>
+
       </mat-card-content>
     </div>
 

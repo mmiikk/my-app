@@ -1,24 +1,49 @@
+import { SettingsComponent } from './settings/settings.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatIconRegistry, MatButtonModule } from '@angular/material';
+import { MatIconRegistry } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ElementsComponent } from './elements/elements.component';
 
+
 import { FormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material';
-import { MatSidenavModule } from '@angular/material';
-import { MatIconModule } from '@angular/material';
-import { MatGridListModule } from '@angular/material';
-import { MatCardModule } from '@angular/material';
-import { MatTableModule } from '@angular/material';
-import { MatMenuModule } from '@angular/material';
-import { MatInputModule } from '@angular/material';
-import { SettingsComponent } from './settings/settings.component';
-import { MatDialogModule } from '@angular/material';
-import { MatButtonToggleModule } from '@angular/material';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatStepperModule,
+} from '@angular/material';
 import { ValueComponent } from './value/value.component';
+
 
 @NgModule({
   declarations: [
@@ -32,17 +57,37 @@ import { ValueComponent } from './value/value.component';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
+    MatAutocompleteModule,
     MatButtonModule,
-    MatGridListModule,
+    MatButtonToggleModule,
     MatCardModule,
-    MatTableModule,
-    MatMenuModule,
-    MatInputModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
   ],
   entryComponents: [
     SettingsComponent

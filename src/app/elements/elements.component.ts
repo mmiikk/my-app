@@ -34,6 +34,7 @@ export class ElementsComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<Element>(ELEMENTS);
 
   constructor(private settingsService: SettingsService, private elementService: ElementService) {
+
     this.subscriptionSettings = settingsService.message$.subscribe(
       message => { this.settings = message; }
     );
@@ -51,7 +52,7 @@ export class ElementsComponent implements OnInit, OnDestroy {
 
   onSelect(element: Element, event): void {
     if(event.ctrlKey){ element.selected = !element.selected; }
-    else {  this.clearSelected(this.dataSource.data); element.selected = !element.selected; this.elementService.sendMessage(element); console.log(element); }
+    else {  this.clearSelected(this.dataSource.data); element.selected = !element.selected; this.elementService.sendMessage(element);  }
 
     console.log(event);
   }
