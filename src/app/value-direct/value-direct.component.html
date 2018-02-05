@@ -1,0 +1,48 @@
+<mat-button-toggle-group #valueDirect="matButtonToggleGroup" class="valueType">
+    <mat-button-toggle value="0">Bit
+
+    </mat-button-toggle>
+    <mat-button-toggle value="1">Int
+
+    </mat-button-toggle>
+    <mat-button-toggle value="2">Real
+
+    </mat-button-toggle>
+    <mat-button-toggle value="3">String
+
+      </mat-button-toggle>
+      <mat-button-toggle value="4">Byte
+
+        </mat-button-toggle>
+
+</mat-button-toggle-group>
+<div class="example-selected-value">Selected value: {{valueDirect.value}}</div>
+<form class="value-static">
+
+  <mat-form-field class="">
+    <input matInput placeholder="Start Byte" value="0">
+  </mat-form-field>
+  <mat-form-field class="" *ngIf="valueDirect.value == 0">
+      <input matInput placeholder="Bit" value="" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-7 ]/g) != null)" maxlength="1">
+  </mat-form-field>
+  <mat-form-field class="" *ngIf="valueDirect.value == 3">
+      <input matInput placeholder="Length" value="" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null)">
+  </mat-form-field>
+  <mat-form-field>
+      <mat-select placeholder="PLC">
+        <mat-option>None</mat-option>
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option2">Option 2</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+
+      <mat-radio-group >
+        <mat-radio-button class="example-margin" value="start">DB Station</mat-radio-button>
+        <mat-radio-button class="example-margin" value="end">DB Panel</mat-radio-button>
+        <mat-radio-button class="example-margin" value="end">DB Manual</mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field class="" >
+          <input matInput placeholder="Start Byte" value="0" >
+        </mat-form-field>
+</form>

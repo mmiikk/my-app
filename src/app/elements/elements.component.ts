@@ -1,3 +1,4 @@
+import { ServerRequestService } from './../server-request.service';
 import { ElementService } from './../element.service';
 import { SettingsService } from './../settings.service';
 import { Element } from './../element';
@@ -16,24 +17,20 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./elements.component.css']
 })
 export class ElementsComponent implements OnInit, OnDestroy {
-  element: Element = {
-    id: 1,
-    station_ID: 1,
-    name: 'dupa',
-    position_X: 1,
-    position_Y: 1,
-    selected: false,width: 300,height: 300,showBorder: false,showName: false,position_name: 'Bottom',onTop: false
-    ,font: {  id: 1,  station_ID: 1,  size: 12,  bold: true,  italic: false,  unterline: false,  centeralign: false  }
 
-  };
-  elements = ELEMENTS;
+  element: Element;
+  elements: Element[];
   subscriptionSettings: Subscription;
   subscriptionElement: Subscription;
+  subscriptionServerRequestService: Subscription;
   settings: Settings;
-  displayedColumns = ['id', 'name', 'position_X', 'position_Y', 'width', 'height'];
-  dataSource = new MatTableDataSource<Element>(ELEMENTS);
+  displayedColumns = ['ID', 'Name', 'Position_X', 'Position_Y', 'Width', 'Height'];
+  dataSource = new MatTableDataSource<Element>(this.elements);
 
-  constructor(private settingsService: SettingsService, private elementService: ElementService) {
+  constructor(private settingsService: SettingsService,
+    private elementService: ElementService,
+    private serverRequestService: ServerRequestService) {
+
 
     this.subscriptionSettings = settingsService.message$.subscribe(
       message => { this.settings = message; }
@@ -43,25 +40,34 @@ export class ElementsComponent implements OnInit, OnDestroy {
     );
   }
 
+  get(): void {
+    this.serverRequestService.getHeroes()
+    .subscribe(heroes => {
+      heroes.forEach(element => {
+        this.elements.push(Object.assign({}, {}, element));
+      });
+      this.dataSource = new MatTableDataSource<Element>(this.elements);
+     });
 
+  }
   ngOnInit() {
+    this.elements = new Array<Element>();
 
   }
   ngOnDestroy() { }
 
 
   onSelect(element: Element, event): void {
-    if(event.ctrlKey){ element.selected = !element.selected; }
-    else {  this.clearSelected(this.dataSource.data); element.selected = !element.selected; this.elementService.sendMessage(element);  }
+    if(event.ctrlKey){ element.Selected = !element.Selected; }
+    else {  this.clearSelected(this.dataSource.data); element.Selected = !element.Selected; this.elementService.sendMessage(element);  }
 
-    console.log(event);
   }
 
 
 
   clearSelected(elements: Element[]): Element[] {
     elements.forEach(element => {
-      element.selected = false;
+      element.Selected = false;
     });
     return elements;
 

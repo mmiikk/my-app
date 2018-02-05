@@ -1,3 +1,4 @@
+import { ValueService } from './value.service';
 import { ElementService } from './element.service';
 import { SettingsService } from './settings.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
@@ -12,7 +13,7 @@ import { Settings } from './settings';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [SettingsService, ElementService]
+  providers: [SettingsService, ElementService, ValueService]
 })
 export class AppComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
              // console.log("Parent");
           );
          elementService.message$.subscribe(
-          message => {  console.log(message);}
+          message => {  }
          );
         this.settings = new Settings();
         this.defaultSettings = new Settings();

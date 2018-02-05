@@ -10,6 +10,10 @@ body {
   padding:0 !important;
   height:100%;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
 .mat-drawer-container{
   width: 100% !important;
   height: calc(100% - 64px) !important;
@@ -56,4 +60,10 @@ overflow-y: scroll;
 }
 .settingsLabel label{
   padding: 0;
+}
+.valueType{
+  font-weight: bold;
+}
+.valueType .mat-button-toggle-checked{
+  color:rgba(255,255,255,.87);
 }

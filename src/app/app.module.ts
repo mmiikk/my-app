@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ElementsComponent } from './elements/elements.component';
 
@@ -43,6 +43,11 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import { ValueComponent } from './value/value.component';
+import { ValueValueIdComponent } from './value-value-id/value-value-id.component';
+import { ValueStaticComponent } from './value-static/value-static.component';
+import { ValueDirectComponent } from './value-direct/value-direct.component';
+import { ValueMaskComponent } from './value-mask/value-mask.component';
+import { ServerRequestService } from './server-request.service';
 
 
 @NgModule({
@@ -50,7 +55,11 @@ import { ValueComponent } from './value/value.component';
     AppComponent,
     ElementsComponent,
     SettingsComponent,
-    ValueComponent
+    ValueComponent,
+    ValueValueIdComponent,
+    ValueStaticComponent,
+    ValueDirectComponent,
+    ValueMaskComponent
   ],
   exports: [  ],
   imports: [
@@ -88,11 +97,12 @@ import { ValueComponent } from './value/value.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    HttpClientModule
   ],
   entryComponents: [
     SettingsComponent
   ],
-  providers: [],
+  providers: [ServerRequestService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

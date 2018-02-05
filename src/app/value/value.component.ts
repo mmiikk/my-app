@@ -1,3 +1,4 @@
+import { ValueService } from './../value.service';
 import { Font } from './../font';
 import { Element } from './../element';
 import { Component, OnInit } from '@angular/core';
@@ -12,15 +13,15 @@ import { ElementService } from '../element.service';
 })
 export class ValueComponent implements OnInit {
 
-
+  valueType: string;
   element: Element;
   subscriptionElement: Subscription;
 
-  constructor(private elementService: ElementService) {
-    //this.element = new Element();
-    console.log("val")
+  constructor(private elementService: ElementService,
+              private valueService: ValueService) {
+
     this.subscriptionElement = elementService.message$.subscribe(
-      message => { this.element = message; console.log(message); }
+      message => { this.element = message; this.valueType = "0"; this.valueService.sendMessage(this.element.ValueID); }
     );
 
 
@@ -28,24 +29,21 @@ export class ValueComponent implements OnInit {
 
   ngOnInit() {
     this.element = new Element();
-    this.element.font = new Font();
-    this.element.font.bold = false;
-    this.element.font.centeralign = false;
-    this.element.font.italic = false;
-    this.element.font.unterline = false;
+    this.element.Font = new Font();
+    this.valueType = "0";
 
   }
 
   toggleAlignCenter(): void{
-    this.element.font.centeralign = !this.element.font.centeralign;
+    this.element.Font.CenterAlign = !this.element.Font.CenterAlign;
   }
   toggleBold(): void{
-    this.element.font.bold = !this.element.font.bold;
+    this.element.Font.Bold = !this.element.Font.Bold;
   }
   toggleUnderline(): void{
-    this.element.font.unterline = !this.element.font.unterline;
+    this.element.Font.Unterline = !this.element.Font.Unterline;
   }
   toggleItalic(): void{
-    this.element.font.italic = !this.element.font.italic;
+    this.element.Font.Italic = !this.element.Font.Italic;
   }
 }

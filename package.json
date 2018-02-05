@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "amexio-ng-extensions": "^3.2.2",
+    "angular-in-memory-web-api": "^0.5.3",
     "angular-material": "http://github.com/angular/bower-material/tarball/v1.1.0-rc2",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",

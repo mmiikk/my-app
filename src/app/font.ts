@@ -1,10 +1,10 @@
-export class Font{
-  id: number;
-  station_ID: number;
-  size: number;
-  bold: boolean;
-  italic: boolean;
-  unterline: boolean;
-  centeralign: boolean;
+export class Font {
+  ID: number;
+  Station_ID: number;
+  Size: number;
+  Bold: boolean;
+  Italic: boolean;
+  Unterline: boolean;
+  CenterAlign: boolean;
 }
 
