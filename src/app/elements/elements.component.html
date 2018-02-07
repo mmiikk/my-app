@@ -1,5 +1,5 @@
       <mat-card class="matcard">
-          <div class="example-container" >
+          <div class="example-container elementContainer" >
               <mat-card-content >
                   <button mat-raised-button (click)="get();"><mat-icon>format_align_center</mat-icon></button>
                 <mat-table #table class="mattableheader">
@@ -34,7 +34,7 @@
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
                </mat-table>
-               <mat-table #table [dataSource]="dataSource" [ngStyle]="{ 'max-height': settings.noOfRowsInTable * 48+ 'px' }">
+               <mat-table #table [dataSource]="dataSource" [ngStyle]="{ 'max-height': settings.noOfRowsInTable * 35+ 'px' }">
                   <ng-container matColumnDef="ID">
                       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
                       <mat-cell *matCellDef="let element"> {{element.ID}} </mat-cell>

@@ -65,4 +65,17 @@ export class ValueValueIdComponent implements OnInit {
       this.value.DBType = 2;
     }
   }
+  setMask(): void {
+    if( ( this.value.Type === 'Static') || ( this.value.Type !== 'Static' && this.value.Mask_ID === 0 ))
+    {
+      this.value.Type = 'Bit';
+      this.value.DB = 0;
+      this.value.Length = 0;
+      this.value.StartByte = 0;
+      this.value.Val = '';
+      this.value.Mask_ID = this.value.ID;
+      this.value.PLC_ID = 0;
+      this.value.DBType = 2;
+    }
+  }
 }

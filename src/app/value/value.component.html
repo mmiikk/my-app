@@ -2,66 +2,62 @@
   <div class="example-container" >
       <mat-card-content >
         <div class="button-row"><mat-list></mat-list>
-            <form class="">
-                <mat-form-field class="">
+            <form class="value">
+                <mat-form-field class="" style="width:30%;">
                     <input matInput placeholder="Name" value="{{element.Name}}">
-                </mat-form-field>
+                </mat-form-field><mat-form-field class="" style="width:17.5%">
+                    <input matInput placeholder="Position X" value="{{element.Position_X}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+                  </mat-form-field><mat-form-field class="" style="width:17.5%">
+                    <input matInput placeholder="Position Y" value="{{element.Position_Y}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+                  </mat-form-field><mat-form-field class="" style="width:17.5%">
+                    <input matInput placeholder="Width" value="{{element.Width}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+                  </mat-form-field><mat-form-field class="last" style="width:17.5%; padding-right:0px;">
+                    <input matInput placeholder="Height" value="{{element.Height}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
+                  </mat-form-field>
+
             </form>
         </div>
-        <mat-divider></mat-divider>
-        <div class="button-row">
-            <button mat-raised-button color="{{element.Font.CenterAlign ? 'primary' : ''}}" (click)="toggleAlignCenter();"><mat-icon>format_align_center</mat-icon></button>
-            <button mat-raised-button color="{{element.Font.Bold ? 'primary' : ''}}" (click)="toggleBold();"><mat-icon>format_bold</mat-icon></button>
-            <button mat-raised-button color="{{element.Font.Italic ? 'primary' : ''}}" (click)="toggleItalic();"><mat-icon>format_italic</mat-icon></button>
-            <button mat-raised-button color="{{element.Font.Unterline ? 'primary' : ''}}" (click)="toggleUnderline();"><mat-icon>format_underlined</mat-icon></button>
-            <mat-form-field>
-              <mat-select placeholder="Font Size" [(ngModel)]="element.Font.Size">
-                <mat-option *ngFor="let font of [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 36, 40, 44, 48, 56, 72]" [value]="font">
-                  {{ font }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="button-row">
-          <form class="example-form">
-            <mat-form-field class="">
-              <input matInput placeholder="Position X" value="{{element.Position_X}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
-            </mat-form-field><mat-form-field class="">
-              <input matInput placeholder="Position Y" value="{{element.Position_Y}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
-            </mat-form-field><mat-form-field class="">
-              <input matInput placeholder="Width" value="{{element.Width}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
-            </mat-form-field><mat-form-field class="">
-              <input matInput placeholder="Height" value="{{element.Height}}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null">
-            </mat-form-field>
 
-          </form>
-        </div>
-        <div class="button-row">
+        <div class="button-row valueButtonRow">
+          <button mat-raised-button color="{{element.Font.CenterAlign ? 'primary' : ''}}" (click)="toggleAlignCenter();"><mat-icon>format_align_center</mat-icon></button>
+          <button mat-raised-button color="{{element.Font.Bold ? 'primary' : ''}}" (click)="toggleBold();"><mat-icon>format_bold</mat-icon></button>
+          <button mat-raised-button color="{{element.Font.Italic ? 'primary' : ''}}" (click)="toggleItalic();"><mat-icon>format_italic</mat-icon></button>
+          <button mat-raised-button color="{{element.Font.Unterline ? 'primary' : ''}}" (click)="toggleUnderline();"><mat-icon>format_underlined</mat-icon></button>
+          <div class="buttons">
+            <mat-form-field>
+            <mat-select placeholder="Font Size" [(ngModel)]="element.Font.Size">
+              <mat-option *ngFor="let font of [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 36, 40, 44, 48, 56, 72]" [value]="font">
+                {{ font }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
             <mat-checkbox class="example-margin" [(ngModel)]="element.OnTop">On Top</mat-checkbox>
             <mat-checkbox class="example-margin" [(ngModel)]="element.ShowName">Show Name</mat-checkbox>
-           <!-- <mat-checkbox class="example-margin" [(ngModel)]="element.picture">Picture</mat-checkbox>-->
+            <!-- <mat-checkbox class="example-margin" [(ngModel)]="element.picture">Picture</mat-checkbox>-->
             <mat-checkbox class="example-margin" [(ngModel)]="element.ShowBorder">Show Border</mat-checkbox>
+          </div>
         </div>
-        <mat-button-toggle-group [(ngModel)]="valueType" class="valueType">
-            <mat-button-toggle value="0">Value_ID
-
-            </mat-button-toggle>
-            <mat-button-toggle value="1">Font Color
-
-            </mat-button-toggle>
-            <mat-button-toggle value="2">Back Color
-
-            </mat-button-toggle>
-            <mat-button-toggle value="4">Action
-
-            </mat-button-toggle>
-            <mat-button-toggle value="5">Visible
+        <mat-divider></mat-divider>
+        <div>
+          <mat-button-toggle-group id="valueType" [(ngModel)]="valueType" class="valueType">
+              <mat-button-toggle value="0">Value_ID
 
               </mat-button-toggle>
+              <mat-button-toggle value="1">Font Color
+
+              </mat-button-toggle>
+              <mat-button-toggle value="2">Back Color
+
+              </mat-button-toggle>
+              <mat-button-toggle value="4">Action
+
+              </mat-button-toggle>
+              <mat-button-toggle value="5">Visible
+
+                </mat-button-toggle>
           </mat-button-toggle-group>
-          <mat-divider></mat-divider>
-          <app-value-value-id></app-value-value-id>
+        </div>
+        <app-value-value-id></app-value-value-id>
       </mat-card-content>
     </div>
 

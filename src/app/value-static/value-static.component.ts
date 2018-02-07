@@ -9,7 +9,7 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: './value-static.component.html',
   styleUrls: ['./value-static.component.css']
 })
-export class ValueStaticComponent implements OnInit, OnChanges {
+export class ValueStaticComponent implements OnInit {
 
   subscriptionValue: Subscription;
   @Input() value: Value;

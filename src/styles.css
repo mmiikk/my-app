@@ -67,3 +67,36 @@ overflow-y: scroll;
 .valueType .mat-button-toggle-checked{
   color:rgba(255,255,255,.87);
 }
+.value .mat-form-field{
+  padding-right:24px;
+  box-sizing: border-box;
+}
+.valueButtonRow .mat-raised-button{
+  min-width:30px;
+  padding:0 0 0 0;
+}
+.buttons{
+  display: inline;
+}
+.buttons .mat-form-field, .mat-checkbox{
+  padding-left: 10px;
+}
+.app-value .matcard{
+  margin-top:0px;
+}
+.elementContainer .mat-row{
+  min-height:34px;
+}
+#valueType{
+  margin-top:10px;
+  margin-bottom:5px;
+}
+.valueDirect{
+  margin-top:10px;
+}
+.value-static{
+  margin-top:10px;
+}
+.DBType{
+  margin-right:10px;
+}
