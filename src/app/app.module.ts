@@ -48,6 +48,8 @@ import { ValueStaticComponent } from './value-static/value-static.component';
 import { ValueDirectComponent } from './value-direct/value-direct.component';
 import { ValueMaskComponent } from './value-mask/value-mask.component';
 import { ServerRequestService } from './server-request.service';
+import { ValueMaskValueFieldNumericComponent } from './value-mask-value-field-numeric/value-mask-value-field-numeric.component';
+import { ValueMaskValueFieldStringComponent } from './value-mask-value-field-string/value-mask-value-field-string.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { ServerRequestService } from './server-request.service';
     ValueValueIdComponent,
     ValueStaticComponent,
     ValueDirectComponent,
-    ValueMaskComponent
+    ValueMaskComponent,
+    ValueMaskValueFieldNumericComponent,
+    ValueMaskValueFieldStringComponent
   ],
   exports: [  ],
   imports: [

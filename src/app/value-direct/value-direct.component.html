@@ -29,21 +29,20 @@
       <input matInput placeholder="Length" [(ngModel)]="value.Length" [ngModelOptions]="{standalone: true}" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null)">
   </mat-form-field>
   <mat-form-field>
-      <mat-select placeholder="PLC">
-        <mat-option>None</mat-option>
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2">Option 2</mat-option>
+      <mat-select placeholder="PLC" [(ngModel)]="value.PLC_ID" [ngModelOptions]="{standalone: true}" (change)="selectPLC($event)">
+        <mat-option *ngFor="let plc of plcs" [value]="plc.ID">{{plc.Name}}</mat-option>
+
 
       </mat-select>
     </mat-form-field>
 
-      <mat-radio-group >
-        <mat-radio-button class="example-margin DBType" value="start">DB Station</mat-radio-button>
-        <mat-radio-button class="example-margin DBType" value="end">DB Panel</mat-radio-button>
-        <mat-radio-button class="example-margin DBType" value="end">DB Manual</mat-radio-button>
+      <mat-radio-group [(ngModel)]="value.DBType" [ngModelOptions]="{standalone: true}">
+        <mat-radio-button class="example-margin DBType" [value]="1">DB Station</mat-radio-button>
+        <mat-radio-button class="example-margin DBType" [value]="0">DB Panel</mat-radio-button>
+        <mat-radio-button class="example-margin DBType" [value]="2">DB Manual</mat-radio-button>
       </mat-radio-group>
-      <mat-form-field class="" >
-          <input matInput placeholder="" value="0" >
+      <mat-form-field class="" style="width:5%;">
+          <input matInput placeholder="" [(ngModel)]="value.DB" [readonly]="value.DBType != 2" [ngModelOptions]="{standalone: true}" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-7 ]/g) != null)">
         </mat-form-field>
 </form>
 

@@ -5,7 +5,7 @@
     <mat-button-toggle value="2" (click)="setDirect();">Direct
 
     </mat-button-toggle>
-    <mat-button-toggle value="3">Mask
+    <mat-button-toggle value="3" (click)="setMask();">Mask
 
     </mat-button-toggle>
 
@@ -14,3 +14,4 @@
 
 <app-value-static  [value]="value" *ngIf="valueIDType == 1"></app-value-static>
 <app-value-direct class="valueDirect" [value]="value" *ngIf="valueIDType == 2"></app-value-direct>
+<app-value-mask class="valueDirect" [value]="value" *ngIf="valueIDType == 3"></app-value-mask>

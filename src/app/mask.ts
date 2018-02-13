@@ -4,5 +4,5 @@ export class Mask {
   Position: Number;
   Value: String;
   MaskVal: String;
-
+  Selected: Boolean;
 }

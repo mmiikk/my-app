@@ -1,0 +1,34 @@
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\Host.exe.config
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\Host.exe
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\Host.pdb
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\Newtonsoft.Json.dll
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Net.Http.Formatting.dll
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Web.Http.dll
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Web.Http.SelfHost.dll
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\Newtonsoft.Json.xml
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Net.Http.Formatting.xml
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Web.Http.xml
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Web.Http.SelfHost.xml
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\obj\Debug\Host.exe
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\obj\Debug\Host.pdb
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Web.Cors.dll
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Web.Http.Cors.dll
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\bin\Debug\System.Web.Http.Cors.xml
+c:\users\mateusz\documents\visual studio 2015\Projects\Host\Host\obj\Debug\Host.csprojResolveAssemblyReference.cache
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\Host.exe.config
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\obj\Debug\Host.exe
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\obj\Debug\Host.pdb
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\Host.exe
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\Host.pdb
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Cors.dll
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Http.Cors.dll
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Http.dll
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Http.SelfHost.dll
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Http.xml
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Http.Cors.xml
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Http.SelfHost.xml
+C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\obj\Debug\Host.csprojResolveAssemblyReference.cache

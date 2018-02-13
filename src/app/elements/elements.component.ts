@@ -1,3 +1,4 @@
+import { PLC } from './../plc';
 import { ServerRequestService } from './../server-request.service';
 import { ElementService } from './../element.service';
 import { SettingsService } from './../settings.service';
@@ -20,6 +21,7 @@ export class ElementsComponent implements OnInit, OnDestroy {
 
   element: Element;
   elements: Element[];
+  plcs: PLC[];
   subscriptionSettings: Subscription;
   subscriptionElement: Subscription;
   subscriptionServerRequestService: Subscription;
@@ -48,11 +50,17 @@ export class ElementsComponent implements OnInit, OnDestroy {
       });
       this.dataSource = new MatTableDataSource<Element>(this.elements);
      });
-
+     this.serverRequestService.getPLCs()
+     .subscribe(heroes => {
+       heroes.forEach(plc => {
+         this.plcs.push(Object.assign({}, {}, plc));
+       }); this.elementService.sendMessagePLC(this.plcs);
+     });
+     console.log(this.plcs);
   }
   ngOnInit() {
     this.elements = new Array<Element>();
-
+    this.plcs = new Array<PLC>();
   }
   ngOnDestroy() { }
 
@@ -62,8 +70,6 @@ export class ElementsComponent implements OnInit, OnDestroy {
     else {  this.clearSelected(this.dataSource.data); element.Selected = !element.Selected; this.elementService.sendMessage(element);  }
 
   }
-
-
 
   clearSelected(elements: Element[]): Element[] {
     elements.forEach(element => {

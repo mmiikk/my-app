@@ -1,3 +1,89 @@
-<p>
-  value-mask works!
-</p>
+<mat-button-toggle-group [(ngModel)]="valueType" class="valueType">
+  <mat-button-toggle value="0">Bit
+
+  </mat-button-toggle>
+  <mat-button-toggle value="1">Int
+
+  </mat-button-toggle>
+  <mat-button-toggle value="2">Real
+
+  </mat-button-toggle>
+  <mat-button-toggle value="3">String
+
+    </mat-button-toggle>
+    <mat-button-toggle value="4">Byte
+
+      </mat-button-toggle>
+
+</mat-button-toggle-group>
+
+<form class="value-static">
+
+<mat-form-field class="" style="width:10%; margin-right:10px;">
+  <input matInput placeholder="Start Byte"  [(ngModel)]="value.StartByte" [ngModelOptions]="{standalone: true}" (ngModelChange)="sendMessage()">
+</mat-form-field>
+<mat-form-field class="" style="width:10%; margin-right:10px;" *ngIf="valueType == 0">
+    <input matInput placeholder="Bit" [(ngModel)]="value.Length" [ngModelOptions]="{standalone: true}" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-7 ]/g) != null)" maxlength="1">
+</mat-form-field>
+<mat-form-field class="" style="width:10%; margin-right:10px;" *ngIf="valueType == 3">
+    <input matInput placeholder="Length" [(ngModel)]="value.Length" [ngModelOptions]="{standalone: true}" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null)">
+</mat-form-field>
+<mat-form-field>
+    <mat-select placeholder="PLC" [(ngModel)]="value.PLC_ID" [ngModelOptions]="{standalone: true}" (change)="selectPLC($event)">
+      <mat-option *ngFor="let plc of plcs" [value]="plc.ID">{{plc.Name}}</mat-option>
+
+
+    </mat-select>
+  </mat-form-field>
+
+    <mat-radio-group [(ngModel)]="value.DBType" [ngModelOptions]="{standalone: true}">
+      <mat-radio-button class="example-margin DBType" [value]="1">DB Station</mat-radio-button>
+      <mat-radio-button class="example-margin DBType" [value]="0">DB Panel</mat-radio-button>
+      <mat-radio-button class="example-margin DBType" [value]="2">DB Manual</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field class="" style="width:5%;">
+        <input matInput placeholder="" [(ngModel)]="value.DB" [readonly]="value.DBType != 2" [ngModelOptions]="{standalone: true}" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-7 ]/g) != null)">
+      </mat-form-field>
+</form>
+
+<mat-table #table class="mattableheader">
+  <ng-container matColumnDef="Position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Mask" >
+      <mat-header-cell *matHeaderCellDef> Mask </mat-header-cell>
+
+    </ng-container>
+    <ng-container matColumnDef="Value">
+      <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    </mat-table>
+    <mat-table [dataSource]="dataSource" >
+      <ng-container matColumnDef="Position">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let mask"> {{mask.Position}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Mask">
+          <mat-header-cell *matHeaderCellDef> Mask </mat-header-cell>
+          <mat-cell *matCellDef="let mask"><span *ngIf="(value.Type != 'String' && (mask.MaskVal.split('_').length - 1) == 1)" >Default</span>
+            <span *ngIf="(value.Type == 'String' || (mask.MaskVal.split('_').length - 1) != 1)" >{{mask.MaskVal}}</span>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Value">
+            <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+            <mat-cell *matCellDef="let mask"> {{mask.Value}} </mat-cell>
+          </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" style="display:none;" ></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [class.mattablerow-selected]="row.Selected" (click)="onSelect(row,$event)" class="mattablerow"></mat-row>
+   </mat-table>
+
+

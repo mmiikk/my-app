@@ -1,4 +1,6 @@
 import { Element } from './element';
+import { PLC } from './plc';
+
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,15 +14,24 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class ServerRequestService {
 
   private heroesUrl = 'http://localhost:8080/api/elements';
+  private plcsUrl = 'http://localhost:8080/api/plcs';
 
   constructor(
     private http: HttpClient) { }
 
     getHeroes (): Observable<Element[]> {
-console.log("dupa");
+
       return this.http.get<Element[]>(this.heroesUrl)
       .pipe(
         catchError(this.handleError('getHeroes', []))
+      );
+    }
+
+    getPLCs (): Observable<PLC[]> {
+
+      return this.http.get<PLC[]>(this.plcsUrl)
+      .pipe(
+        catchError(this.handleError('getPLCs', []))
       );
     }
     private handleError<T> (operation = 'operation', result?: T) {
