@@ -85,11 +85,7 @@ export class ValueMaskComponent implements OnInit, OnChanges {
       break;
 
     }
-    console.log( this.valueType);
-    if(valueType != 3 && valueType != -1)  
-    console.log("DDD");
-    else
-    console.log("pp");
+
   }
 
   sendMessage() {

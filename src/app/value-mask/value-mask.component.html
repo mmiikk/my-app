@@ -83,11 +83,18 @@
           </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns" style="display:none;" ></mat-header-row>
+
         <mat-row *matRowDef="let row; columns: displayedColumns;" [class.mattablerow-selected]="row.Selected" (click)="onSelect(row,$event)" class="mattablerow"></mat-row>
    </mat-table>
 
-   <button mat-mini-fab color="accent">Accent</button>
+
+
+<div class="simpleRow">
 
    <app-value-mask-value-field-string [mask]="selectedMask" *ngIf="(valueType !== 3 && valueType !== -1 && selectedMask.Selected)"></app-value-mask-value-field-string>
-   
-   
+   <span class="example-spacer"></span>
+   <div class="simpleRowButtons">
+      <button mat-mini-fab color="accent" class="buttonInRow"><mat-icon>add</mat-icon></button>
+      <button mat-mini-fab color="accent" class="buttonInRow"><mat-icon>delete</mat-icon></button>
+    </div>
+</div>
