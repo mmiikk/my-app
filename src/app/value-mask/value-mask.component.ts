@@ -23,9 +23,10 @@ export class ValueMaskComponent implements OnInit, OnChanges {
   plcs: PLC[];
   displayedColumns = ['Position', 'Mask', 'Value'];
   dataSource = new MatTableDataSource<Mask>();
+  selectedMask: Mask;
 
   constructor( private elementService: ElementService) {
-    this.valueType = "0";
+    this.valueType = "-1";
     this.subscriptionPLCs = elementService.messagePLC$.subscribe(
       message => { this.plcs = message; console.log(this.value); }
     );
@@ -42,8 +43,9 @@ export class ValueMaskComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.valueType = "-1";
     this.checkValueType();
-
+    this.selectedMask = new Mask();
   }
 
   selectPLC(event): void{
@@ -52,6 +54,10 @@ export class ValueMaskComponent implements OnInit, OnChanges {
   onSelect(mask: Mask, event): void {
     this.clearSelected(this.value.Mask);
     mask.Selected = !mask.Selected;
+    if(mask.Selected)
+      this.selectedMask = mask;
+    else
+      this.selectedMask = new Mask();
   }
   clearSelected(masks: Mask[]): Mask[] {
     masks.forEach(mask => {
@@ -61,7 +67,6 @@ export class ValueMaskComponent implements OnInit, OnChanges {
   }
 
   checkValueType() {
-    console.log(this.value);
     switch (this.value.Type) {
       case "Bit":
         this.valueType = "0";
@@ -80,11 +85,14 @@ export class ValueMaskComponent implements OnInit, OnChanges {
       break;
 
     }
+    console.log( this.valueType);
+    if(valueType != 3 && valueType != -1)  
+    console.log("DDD");
+    else
+    console.log("pp");
   }
 
   sendMessage() {
-    console.log("dupa");
-
     this.messageEvent.emit(this.value);
   }
 

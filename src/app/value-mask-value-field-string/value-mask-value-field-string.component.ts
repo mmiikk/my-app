@@ -17,4 +17,8 @@ export class ValueMaskValueFieldStringComponent implements OnInit {
   ngOnInit() {
   }
 
+  sendMessage() {
+    console.log(this.mask);
+  //  this.messageEvent.emit(this.value);
+  }
 }

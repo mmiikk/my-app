@@ -32,3 +32,6 @@ C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.We
 C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Http.Cors.xml
 C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\bin\Debug\System.Web.Http.SelfHost.xml
 C:\Users\Mateusz\Desktop\Host-20171022T183429Z-001\Host\Host\obj\Debug\Host.csprojResolveAssemblyReference.cache
+C:\Users\mmikolajczyk\Documents\GitHub\my-app\Host\Host\bin\Debug\Host.exe.config
+C:\Users\mmikolajczyk\Documents\GitHub\my-app\Host\Host\obj\Debug\Host.exe
+C:\Users\mmikolajczyk\Documents\GitHub\my-app\Host\Host\obj\Debug\Host.pdb

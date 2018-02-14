@@ -86,4 +86,8 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;" [class.mattablerow-selected]="row.Selected" (click)="onSelect(row,$event)" class="mattablerow"></mat-row>
    </mat-table>
 
+   <button mat-mini-fab color="accent">Accent</button>
 
+   <app-value-mask-value-field-string [mask]="selectedMask" *ngIf="(valueType !== 3 && valueType !== -1 && selectedMask.Selected)"></app-value-mask-value-field-string>
+   
+   
