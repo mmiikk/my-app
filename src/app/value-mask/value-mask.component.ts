@@ -83,6 +83,7 @@ export class ValueMaskComponent implements OnInit, OnChanges {
     this.clearSelected(this.value.Mask);
     this.selectedMask = new Mask();
     this.dataSource = new MatTableDataSource<Mask>(this.value.Mask);
+    console.log(this.valueType);
   }
 
   clearSelected(masks: Mask[]): Mask[] {
@@ -118,7 +119,7 @@ export class ValueMaskComponent implements OnInit, OnChanges {
 
     if(id !== -1)
       this.value.Mask.splice(id,1);
-    
+
     this.dataSource = new MatTableDataSource<Mask>(this.value.Mask);
     this.sendMessage();
     this.selectedMask = new Mask();
@@ -137,10 +138,11 @@ export class ValueMaskComponent implements OnInit, OnChanges {
 
     this.value.Mask.push(Object.assign({}, {}, newMask));
     var id = this.value.Mask.indexOf(this.value.Mask.find(mask => mask.Position == Infinity));
-    this.onSelect(this.value.Mask[id],null); 
+    this.onSelect(this.value.Mask[id],null);
     this.recalcMask();
     this.dataSource = new MatTableDataSource<Mask>(this.value.Mask);
-    
+    console.log("Add");
+    console.log(this.valueType);
   }
 
   recalcMask(): void{

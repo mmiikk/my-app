@@ -7,7 +7,7 @@ import { Mask } from '../mask';
   templateUrl: './value-mask-value-field-numeric.component.html',
   styleUrls: ['./value-mask-value-field-numeric.component.css']
 })
-export class ValueMaskValueFieldNumericComponent implements OnInit {
+export class ValueMaskValueFieldNumericComponent implements OnInit, OnChanges {
 
   @Input() mask: Mask;
   @Input() value: Value;
@@ -16,6 +16,7 @@ export class ValueMaskValueFieldNumericComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("dupa");
   }
 
 }
