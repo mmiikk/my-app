@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Value } from './../value';
+import { Mask } from '../mask';
 
 @Component({
   selector: 'app-value-mask-value-field-numeric',
@@ -6,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./value-mask-value-field-numeric.component.css']
 })
 export class ValueMaskValueFieldNumericComponent implements OnInit {
+
+  @Input() mask: Mask;
+  @Input() value: Value;
+  @Output() messageEvent = new EventEmitter<Mask>();
 
   constructor() { }
 
