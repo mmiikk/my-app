@@ -1,0 +1,9 @@
+<mat-form-field class="" style="width:50%; margin-right:10px;">
+    <input matInput placeholder="Mask"  [(ngModel)]="mask.MaskVal" [ngModelOptions]="{standalone: true}" [disabled]="default" (ngModelChange)="sendMessage()" [maxLength]="value.Length">
+  </mat-form-field>
+  <mat-form-field class="" style="width:70%; margin-right:10px;" >
+      <input matInput placeholder="Value" [(ngModel)]="mask.Value" [ngModelOptions]="{standalone: true}" [disabled]="default" (change)="sendMessage()" (ngModelChange)="sendMessage()" >
+  </mat-form-field>
+  
+  <mat-slide-toggle [checked]="default" (change)="toggleDefault()">Default</mat-slide-toggle>
+  

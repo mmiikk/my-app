@@ -72,8 +72,17 @@
         <!-- Name Column -->
         <ng-container matColumnDef="Mask">
           <mat-header-cell *matHeaderCellDef> Mask </mat-header-cell>
-          <mat-cell *matCellDef="let mask"><span *ngIf="(value.Type != 'String' && (mask.MaskVal.split('_').length - 1) == 1)" >Default</span>
-            <span *ngIf="(value.Type == 'String' || (mask.MaskVal.split('_').length - 1) != 1)" >{{mask.MaskVal}}</span>
+          <mat-cell *matCellDef="let mask">
+            <span *ngIf="((valueType == 0 && (mask.MaskVal.split('_').length - 1) == 1))" >Default</span>
+            <span *ngIf="((valueType == 1 && (mask.MaskVal.split('_').length - 1) == 1))" >Default</span>
+            <span *ngIf="((valueType == 2 && (mask.MaskVal.split('_').length - 1) == 1))" >Default</span>
+            <span *ngIf="((valueType == 4 && (mask.MaskVal.split('_').length - 1) == 1))" >Default</span>
+            <span *ngIf="((valueType == 3 && (mask.MaskVal.split('_').length - 1) == value.Length ))" >Default</span>
+            <span *ngIf="valueType == 3 && ((mask.MaskVal.split('_').length - 1) > value.Length || (mask.MaskVal.split('_').length - 1) < value.Length)" >{{mask.MaskVal}}</span>
+            <span *ngIf="valueType == 0 && ((mask.MaskVal.split('_').length - 1) > 1 || (mask.MaskVal.split('_').length - 1) < 1)" >{{mask.MaskVal}}</span>
+            <span *ngIf="valueType == 1 && ((mask.MaskVal.split('_').length - 1) > 1 || (mask.MaskVal.split('_').length - 1) < 1)" >{{mask.MaskVal}}</span>
+            <span *ngIf="valueType == 2 && ((mask.MaskVal.split('_').length - 1) > 1 || (mask.MaskVal.split('_').length - 1) < 1)" >{{mask.MaskVal}}</span>
+            <span *ngIf="valueType == 4 && ((mask.MaskVal.split('_').length - 1) > 1 || (mask.MaskVal.split('_').length - 1) < 1)" >{{mask.MaskVal}}</span>
           </mat-cell>
         </ng-container>
 

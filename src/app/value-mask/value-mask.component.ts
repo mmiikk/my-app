@@ -31,7 +31,6 @@ export class ValueMaskComponent implements OnInit, OnChanges {
       message => { this.plcs = message; console.log(this.value); }
     );
 
-  //  this.value = new Value();
   }
 
   ngOnChanges(){
@@ -83,7 +82,6 @@ export class ValueMaskComponent implements OnInit, OnChanges {
     this.clearSelected(this.value.Mask);
     this.selectedMask = new Mask();
     this.dataSource = new MatTableDataSource<Mask>(this.value.Mask);
-    console.log(this.valueType);
   }
 
   clearSelected(masks: Mask[]): Mask[] {
@@ -141,8 +139,7 @@ export class ValueMaskComponent implements OnInit, OnChanges {
     this.onSelect(this.value.Mask[id],null);
     this.recalcMask();
     this.dataSource = new MatTableDataSource<Mask>(this.value.Mask);
-    console.log("Add");
-    console.log(this.valueType);
+   
   }
 
   recalcMask(): void{

@@ -1,0 +1,4 @@
+<mat-grid-list cols="8" rowHeight="fit" style="height:256px;">
+    <mat-grid-tile  *ngFor="let c of Colors; let i = index"><div class="colorButton"  [ngStyle]="{'background-color': c.HexColor}"></div></mat-grid-tile>
+    
+  </mat-grid-list>

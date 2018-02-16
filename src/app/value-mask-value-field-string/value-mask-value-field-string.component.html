@@ -1,5 +1,9 @@
 <mat-form-field class="" style="width:50%; margin-right:10px;">
-  <input matInput placeholder="Mask"  [(ngModel)]="mask.MaskVal" [ngModelOptions]="{standalone: true}" [disabled]="default" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-7 ]/g) != null)" maxlength="1">
+  <input matInput placeholder="Mask" *ngIf="value.Type=='Byte'" [(ngModel)]="mask.MaskVal" [ngModelOptions]="{standalone: true}" [disabled]="default" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-7 ]/g) != null)" maxlength="1">
+  <input matInput placeholder="Mask" *ngIf="value.Type=='Bit'" [(ngModel)]="mask.MaskVal" [ngModelOptions]="{standalone: true}" [disabled]="default" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-1 ]/g) != null)" maxlength="1">
+  <input matInput placeholder="Mask" *ngIf="value.Type=='Int'" [(ngModel)]="mask.MaskVal" [ngModelOptions]="{standalone: true}" [disabled]="default" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-9]/g) != null)" maxlength="5">
+  <input matInput placeholder="Mask" *ngIf="value.Type=='Real'" [(ngModel)]="mask.MaskVal" [ngModelOptions]="{standalone: true}" [disabled]="default" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-9.]/g) != null)" maxlength="8">
+  
 </mat-form-field>
 <mat-form-field class="" style="width:70%; margin-right:10px;" >
     <input matInput placeholder="Value" [(ngModel)]="mask.Value" [ngModelOptions]="{standalone: true}" [disabled]="default" (change)="sendMessage()" (ngModelChange)="sendMessage()" >

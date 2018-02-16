@@ -129,3 +129,14 @@ overflow-y: scroll;
   min-width: 10% !important;
   outline: none !important;
 }
+.colorContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.colorButton{
+  width:24px;
+  height:24px;
+  
+  margin:4px;
+}

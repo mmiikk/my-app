@@ -50,6 +50,7 @@ import { ValueMaskComponent } from './value-mask/value-mask.component';
 import { ServerRequestService } from './server-request.service';
 import { ValueMaskValueFieldNumericComponent } from './value-mask-value-field-numeric/value-mask-value-field-numeric.component';
 import { ValueMaskValueFieldStringComponent } from './value-mask-value-field-string/value-mask-value-field-string.component';
+import { ColorpickerComponent } from './colorpicker/colorpicker.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { ValueMaskValueFieldStringComponent } from './value-mask-value-field-str
     ValueDirectComponent,
     ValueMaskComponent,
     ValueMaskValueFieldNumericComponent,
-    ValueMaskValueFieldStringComponent
+    ValueMaskValueFieldStringComponent,
+    ColorpickerComponent
   ],
   exports: [  ],
   imports: [
