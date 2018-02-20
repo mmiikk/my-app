@@ -24,12 +24,9 @@ export class SettingsComponent implements OnInit {
 
 
   onNumberChange(event ) {
-    console.log(this.settings);
   }
   send(): void {
-    console.log("Send");
   }
   save(): void {
-    console.log(this.settings);
   }
 }

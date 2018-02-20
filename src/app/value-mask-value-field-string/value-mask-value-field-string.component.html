@@ -1,3 +1,6 @@
+<div class="valueStaticColorContainer" *ngIf="value.ID > 1000 && value.ID < 3000">
+    <div class="valueStaticColor" [ngStyle]="{'background-color': color.HexVal}"></div>
+</div>
 <mat-form-field class="" style="width:50%; margin-right:10px;">
   <input matInput placeholder="Mask" *ngIf="value.Type=='Byte'" [(ngModel)]="mask.MaskVal" [ngModelOptions]="{standalone: true}" [disabled]="default" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-7 ]/g) != null)" maxlength="1">
   <input matInput placeholder="Mask" *ngIf="value.Type=='Bit'" [(ngModel)]="mask.MaskVal" [ngModelOptions]="{standalone: true}" [disabled]="default" (ngModelChange)="sendMessage()" onkeypress="return ( String.fromCharCode(event.charCode).match(/[0-1 ]/g) != null)" maxlength="1">

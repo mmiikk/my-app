@@ -5,11 +5,11 @@ import { Value } from './../value';
 import { ValueStaticComponent } from '../value-static/value-static.component';
 
 @Component({
-  selector: 'app-value-value-id',
-  templateUrl: './value-value-id.component.html',
-  styleUrls: ['./value-value-id.component.css']
+  selector: 'app-value-back-color',
+  templateUrl: './value-back-color.component.html',
+  styleUrls: ['./value-back-color.component.css']
 })
-export class ValueValueIdComponent implements OnInit, OnChanges {
+export class ValueBackColorComponent implements OnInit {
 
   subscriptionValue: Subscription;
   value: Value;
@@ -18,7 +18,6 @@ export class ValueValueIdComponent implements OnInit, OnChanges {
   constructor(private valueService: ValueService) {
     this.subscriptionValue = valueService.message$.subscribe(
       message => {
-
         this.value = message;
         this.valueIDType = '-1';
         if( this.value.Type === 'Static' ) { this.valueIDType = '1'; }
@@ -26,6 +25,7 @@ export class ValueValueIdComponent implements OnInit, OnChanges {
           if(this.value.Type !== 'Static' && this.value.Mask_ID === 0) { this.valueIDType = '2'; }
           else { this.valueIDType = '3'; }
         }
+
       });
    }
 
@@ -33,7 +33,8 @@ export class ValueValueIdComponent implements OnInit, OnChanges {
     this.valueService.getValue();
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
+    console.log("dmiana");
     this.valueService.getValue();
   }
 

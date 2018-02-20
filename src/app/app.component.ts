@@ -7,6 +7,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { SettingsComponent } from './settings/settings.component';
 import { Settings } from './settings';
+import { Color } from './color';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
 
     settings: Settings;
     defaultSettings: Settings;
+    color: Color;
 
     constructor(public dialog: MatDialog,
       private settingsService: SettingsService,
@@ -28,8 +30,8 @@ export class AppComponent implements OnInit {
 
              // console.log("Parent");
           );
-         elementService.message$.subscribe(
-          message => {  }
+         elementService.messageColor$.subscribe(
+          message => { this.color = message; }
          );
         this.settings = new Settings();
         this.defaultSettings = new Settings();
@@ -37,6 +39,7 @@ export class AppComponent implements OnInit {
       }
 
     ngOnInit(){
+      this.color = new Color();
       this.settingsService.sendMessage(this.settings);
     }
 

@@ -88,10 +88,10 @@ namespace Host.Helper
                     obj.OnTop = (bool)row["OnTop"];
                     obj.Font = Fonts.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == obj.ID);
                     obj.ValueID = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == obj.ID && x.ID == obj.ID);
-                    obj.FontColor = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == obj.ID && x.ID == 1000+obj.ID);
-                    obj.BackColor = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == obj.ID && x.ID == 2000 + obj.ID);
-                    obj.Action = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == obj.ID && x.ID == 4000 + obj.ID);
-                    obj.Visible = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == obj.ID && x.ID == 5000 + obj.ID);
+                    obj.FontColor = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == 1000+obj.ID);
+                    obj.BackColor = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID &&  x.ID == 2000 + obj.ID);
+                    obj.Action = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == 4000 + obj.ID);
+                    obj.Visible = Values.FirstOrDefault(x => x.Station_ID == obj.Station_ID && x.ID == 5000 + obj.ID);
                     //   obj.Masks = loadMasks(StationID, (int)row["ID"]);
 
                     ElementsSet.Add(obj);

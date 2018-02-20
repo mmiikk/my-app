@@ -1,4 +1,53 @@
-<mat-grid-list cols="8" rowHeight="fit" style="height:256px;">
-    <mat-grid-tile  *ngFor="let c of Colors; let i = index"><div class="colorButton"  [ngStyle]="{'background-color': c.HexColor}"></div></mat-grid-tile>
-    
-  </mat-grid-list>
+<mat-card>
+    <div class="colorPickerContainer">
+      <div class="colorPickerColorsCard">
+        <mat-grid-list cols="8" rowHeight="fit" style="height:256px;">
+            <mat-grid-tile  *ngFor="let c of Colors; let i = index"><div class="colorButton"  [ngStyle]="{'background-color': c.HexVal}" (click)="onSelectColor(c)"></div></mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+
+      
+    <mat-list class="colorPickerList">
+        <mat-list-item>
+            <form class="example-form">
+                <mat-form-field class="">
+                  <input matInput placeholder="Color" [(ngModel)]="selectedColor.IntVal" [ngModelOptions]="{standalone: true}" onkeypress="return String.fromCharCode(event.charCode).match(/[0-9 ]/g) != null" (input)="onTypeColor()" maxlength="8">
+                </mat-form-field>
+              </form>
+            </mat-list-item>
+        <mat-list-item>
+          <div [ngStyle]="{'background-color': selectedColor.HexVal}" class="colorPickerSelectedColor"style="width:48px; height:48px;"></div>
+        </mat-list-item>
+        <mat-list-item>
+          <span class="mat-button-toggle-label-content">R: </span><mat-slider min="0" max="255" step="1" [(ngModel)]="selectedColor.B" [vertical]="vertical" thumb-label="false" tick-interval="1"></mat-slider>
+          <form class="colorPickerForm">
+              <mat-form-field class="colorPickerColorValue">
+                <input matInput placeholder="" [(ngModel)]="selectedColor.B" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+          </form> 
+        </mat-list-item>
+        <mat-list-item>
+            <span class="mat-button-toggle-label-content">G: </span><mat-slider min="0" max="255" step="1" [(ngModel)]="selectedColor.G" [vertical]="vertical" thumb-label="false" tick-interval="1"></mat-slider>
+            <form class="colorPickerForm">
+                <mat-form-field class="colorPickerColorValue">
+                  <input matInput placeholder="" [(ngModel)]="selectedColor.G" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+            </form>
+        </mat-list-item>
+        <mat-list-item>
+            <span class="mat-button-toggle-label-content">B: </span><mat-slider min="0" max="255" step="1" [(ngModel)]="selectedColor.R" [vertical]="vertical" thumb-label="false" tick-interval="1"></mat-slider>
+            <form class="colorPickerForm">
+                <mat-form-field class="colorPickerColorValue">
+                  <input matInput placeholder="" [(ngModel)]="selectedColor.R" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+            </form>
+        </mat-list-item>
+    </mat-list>
+
+</mat-card>
+
+
+
+
+   

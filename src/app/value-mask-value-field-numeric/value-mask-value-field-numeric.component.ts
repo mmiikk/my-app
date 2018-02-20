@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Value } from './../value';
 import { Mask } from '../mask';
+import { Color } from './../color';
+import { ElementService } from '../element.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-value-mask-value-field-numeric',
@@ -13,15 +16,26 @@ export class ValueMaskValueFieldNumericComponent implements OnInit, OnChanges {
   @Input() value: Value;
   @Output() messageEvent = new EventEmitter<Mask>();
   default: Boolean;
+  subscriptionValue: Subscription;
+  color: Color;
 
-  constructor() { }
+  constructor(private elementService: ElementService) { 
+    this.subscriptionValue = elementService.messageColor$.subscribe(
+    message => {
+      if(this.value.ID > 1000 && this.value.ID < 3000)
+      {   this.color = message;    }
+    })
+    console.log(this.value);
+  }
 
   ngOnInit() {
+    console.log("numeric");
     this.checkDefault();
   }
 
   ngOnChanges() {
     this.checkDefault();
+    this.elementService.getColor();
   }
 
   checkDefault(): void{

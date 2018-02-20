@@ -4,12 +4,13 @@ import { Subscription } from 'rxjs/Subscription';
 import { Value } from './../value';
 import { ValueStaticComponent } from '../value-static/value-static.component';
 
+
 @Component({
-  selector: 'app-value-value-id',
-  templateUrl: './value-value-id.component.html',
-  styleUrls: ['./value-value-id.component.css']
+  selector: 'app-value-font-color',
+  templateUrl: './value-font-color.component.html',
+  styleUrls: ['./value-font-color.component.css']
 })
-export class ValueValueIdComponent implements OnInit, OnChanges {
+export class ValueFontColorComponent implements OnInit, OnChanges {
 
   subscriptionValue: Subscription;
   value: Value;
@@ -26,6 +27,7 @@ export class ValueValueIdComponent implements OnInit, OnChanges {
           if(this.value.Type !== 'Static' && this.value.Mask_ID === 0) { this.valueIDType = '2'; }
           else { this.valueIDType = '3'; }
         }
+
       });
    }
 
@@ -33,7 +35,7 @@ export class ValueValueIdComponent implements OnInit, OnChanges {
     this.valueService.getValue();
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.valueService.getValue();
   }
 

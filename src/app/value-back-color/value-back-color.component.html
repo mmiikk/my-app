@@ -1,0 +1,13 @@
+<mat-button-toggle-group [(ngModel)]="valueIDType" class="valueType">
+    <mat-button-toggle value="1"  (click)="setStatic();">Static
+
+    </mat-button-toggle>
+    <mat-button-toggle value="3" (click)="setMask();">Mask
+
+    </mat-button-toggle>
+
+  </mat-button-toggle-group>
+
+
+<app-value-static  [value]="value" *ngIf="valueIDType == 1"></app-value-static>
+<app-value-mask class="valueDirect" [value]="value" *ngIf="valueIDType == 3"></app-value-mask>

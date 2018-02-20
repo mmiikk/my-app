@@ -3,6 +3,7 @@ import { ServerRequestService } from './../server-request.service';
 import { ElementService } from './../element.service';
 import { SettingsService } from './../settings.service';
 import { Element } from './../element';
+import { Color } from './../color';
 import { ELEMENTS } from '../mock-elements';
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
@@ -56,7 +57,6 @@ export class ElementsComponent implements OnInit, OnDestroy {
          this.plcs.push(Object.assign({}, {}, plc));
        }); this.elementService.sendMessagePLC(this.plcs);
      });
-     console.log(this.plcs);
   }
   ngOnInit() {
     this.elements = new Array<Element>();
@@ -67,7 +67,7 @@ export class ElementsComponent implements OnInit, OnDestroy {
 
   onSelect(element: Element, event): void {
     if(event.ctrlKey){ element.Selected = !element.Selected; }
-    else {  this.clearSelected(this.dataSource.data); element.Selected = !element.Selected; this.elementService.sendMessage(element);  }
+    else {  this.clearSelected(this.dataSource.data); element.Selected = !element.Selected; this.elementService.sendMessage(element); this.elementService.sendColor(new Color()); }
 
   }
 

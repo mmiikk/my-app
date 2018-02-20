@@ -48,7 +48,6 @@ export class ValueMaskComponent implements OnInit, OnChanges {
   }
 
   selectPLC(event): void{
-    console.log(this.value);
   }
 
   onSelect(mask: Mask, event): void {

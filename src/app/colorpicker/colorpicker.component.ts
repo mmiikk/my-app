@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Color } from '../color';
+import { ElementService } from '../element.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-colorpicker',
@@ -9,10 +11,18 @@ import { Color } from '../color';
 export class ColorpickerComponent implements OnInit {
 
   Colors: Color[];
-  constructor() { }
+  selectedColor: Color;
+  subscriptionElement: Subscription;
+
+  constructor(private elementService: ElementService) { 
+    this.subscriptionElement = elementService.messageColor$.subscribe(
+      message => { this.selectedColor = message; console.log(this.selectedColor);}
+    );
+  }
 
   ngOnInit() {
 
+    //this.selectedColor = new Color();
     const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
       const hex = x.toString(16)
       return hex.length === 1 ? '0' + hex : hex
@@ -34,37 +44,31 @@ export class ColorpickerComponent implements OnInit {
     {
       for(var col=0; col< 8; col++)
       {
-        var i=r_s[row] + col * Math.round((r_e[row]-r_s[row])/7);
+        var k=r_s[row] + col * Math.round((r_e[row]-r_s[row])/7);
         var j=g_s[row] + col * Math.round((g_e[row]-g_s[row])/7);     
-        var k=b_s[row] + col * Math.round((b_e[row]-b_s[row])/7);      
+        var i=b_s[row] + col * Math.round((b_e[row]-b_s[row])/7);      
         color = new Color();
-              color.R = Math.round(i);
-              color.G = Math.round(j);
-              color.B = Math.round(k);
-              color.HexColor = rgbToHex(color.R,color.G,color.B);
-              this.Colors.push(color);
-              console.log( i);
-          
+        color.IntVal = Math.round(i) * 65536 + Math.round(j) * 256 + Math.round(k);
+        color.calculateColorFromInt();
         
+        this.Colors.push(color);
       }
-     
-
     }
-    
- 
-/*
-    for(var i = 0; i<=255; i=i+25)
-    {
-      color = new Color();
-      color.R = i;
-      color.HexColor = '#' + color.R.toString(16) + '00' + '00';
-      this.Colors.push(color);
-      console.log(color.R.toString(16));
-    }
-*/
-
-
+    this.elementService.getColor();
   }
 
- 
+  onSelectColor(color: Color): void{
+    this.selectedColor = color;
+    this.elementService.sendColor(this.selectedColor);
+  }
+
+  onTypeColor(): void{
+    var color = this.selectedColor;
+    this.selectedColor = new Color();
+
+    color.calculateColorFromInt();
+   
+    this.selectedColor = color;
+    this.elementService.sendColor(this.selectedColor);
+  }
 }
