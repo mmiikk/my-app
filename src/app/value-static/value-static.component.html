@@ -1,8 +1,6 @@
 
 <form class="value-static" ngstan>
-  <div class="valueStaticColorContainer" *ngIf="value.ID > 1000 && value.ID < 3000"><div class="valueStaticColor" [ngStyle]="{'background-color': color.HexVal}"></div></div>
-    
-    
+      
     <mat-form-field class="">
       <input matInput placeholder="" [(ngModel)]="value.Val" [ngModelOptions]="{standalone: true}" (ngModelChange)="sendMessage()" (input)="onColorChange()">
     </mat-form-field>

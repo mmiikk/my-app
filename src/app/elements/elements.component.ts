@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Settings } from './../settings';
 import { Subscription } from 'rxjs/Subscription';
+import { ElementsService } from '../elements.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ElementsComponent implements OnInit, OnDestroy {
   plcs: PLC[];
   subscriptionSettings: Subscription;
   subscriptionElement: Subscription;
+  subscriptionElements: Subscription;
   subscriptionServerRequestService: Subscription;
   settings: Settings;
   displayedColumns = ['ID', 'Name', 'Position_X', 'Position_Y', 'Width', 'Height'];
@@ -32,8 +34,8 @@ export class ElementsComponent implements OnInit, OnDestroy {
 
   constructor(private settingsService: SettingsService,
     private elementService: ElementService,
-    private serverRequestService: ServerRequestService) {
-
+    private serverRequestService: ServerRequestService,
+    private elementsService: ElementsService) {
 
     this.subscriptionSettings = settingsService.message$.subscribe(
       message => { this.settings = message; }
@@ -41,6 +43,9 @@ export class ElementsComponent implements OnInit, OnDestroy {
     this.subscriptionElement = elementService.message$.subscribe(
       message => { this.element = message; }
     );
+    this.subscriptionElements = elementsService.message$.subscribe(
+      message => { this.elements = message; this.dataSource = new MatTableDataSource<Element>(this.elements);}
+    )
   }
 
   get(): void {
@@ -67,7 +72,7 @@ export class ElementsComponent implements OnInit, OnDestroy {
 
   onSelect(element: Element, event): void {
     if(event.ctrlKey){ element.Selected = !element.Selected; }
-    else {  this.clearSelected(this.dataSource.data); element.Selected = !element.Selected; this.elementService.sendMessage(element); this.elementService.sendColor(new Color()); }
+    else {  this.clearSelected(this.dataSource.data); element.Selected = !element.Selected; this.elementService.sendMessage(element); console.log("color from elements"); this.elementService.sendColor(new Color()); }
 
   }
 

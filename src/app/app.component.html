@@ -6,10 +6,13 @@
     </button>
     <span>Thin Client Configurator</span>
     <span class="example-spacer"></span>
+    <button mat-icon-button (click)="get()" title=" " >
+        <mat-icon>play_circle_filled</mat-icon>
+    </button>
     <button mat-icon-button (click)="openDialog()" title=" " >
         <mat-icon>settings</mat-icon>
     </button>
-
+    
 
 </mat-toolbar></nav>
 <mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')" >

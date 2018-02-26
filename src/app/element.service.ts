@@ -32,7 +32,8 @@ export class ElementService {
   getPLCs() {
     this.messagePLC.next(this.PLCs);
   }
-  getColor() {
+  getColor(request: string) {
+    console.log("request");
     this.messageColor.next(this.color);
   }
 }

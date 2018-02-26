@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Color } from '../color';
 import { ElementService } from '../element.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './colorpicker.component.html',
   styleUrls: ['./colorpicker.component.css']
 })
-export class ColorpickerComponent implements OnInit {
+export class ColorpickerComponent implements OnInit, OnChanges {
 
   Colors: Color[];
   selectedColor: Color;
@@ -16,7 +16,7 @@ export class ColorpickerComponent implements OnInit {
 
   constructor(private elementService: ElementService) { 
     this.subscriptionElement = elementService.messageColor$.subscribe(
-      message => { this.selectedColor = message; console.log(this.selectedColor);}
+      message => { this.selectedColor = message; this.selectedColor.calculateColorFromInt(); console.log(this.selectedColor);}
     );
   }
 
@@ -54,7 +54,11 @@ export class ColorpickerComponent implements OnInit {
         this.Colors.push(color);
       }
     }
-    this.elementService.getColor();
+    this.elementService.getColor("ColorPicker L 57");
+  }
+
+  ngOnChanges() {
+
   }
 
   onSelectColor(color: Color): void{

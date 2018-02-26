@@ -1,6 +1,9 @@
 import { ValueService } from './value.service';
 import { ElementService } from './element.service';
+import { PLC } from './PLC';
+import { ElementsService } from './elements.service';
 import { SettingsService } from './settings.service';
+import { ServerRequestService } from './server-request.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -14,18 +17,24 @@ import { Color } from './color';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [SettingsService, ElementService, ValueService]
+  providers: [SettingsService, ElementService, ValueService, ElementsService]
 })
 export class AppComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
     settings: Settings;
     defaultSettings: Settings;
+    subscriptionServerRequestService: Subscription;
     color: Color;
+    element: Element;
+    elements: Element[];
+    plcs: PLC[];
 
     constructor(public dialog: MatDialog,
       private settingsService: SettingsService,
-      private elementService: ElementService) {
+      private elementService: ElementService,
+      private elementsService: ElementsService,
+      private serverRequestService: ServerRequestService) {
          settingsService.message$.subscribe(
 
              // console.log("Parent");
@@ -38,7 +47,25 @@ export class AppComponent implements OnInit {
         this.settings.noOfRowsInTable = 6;
       }
 
+    get(): void {
+      this.serverRequestService.getHeroes()
+      .subscribe(data => {
+        data.forEach(el => {
+          this.elements.push(Object.assign({}, {}, el));
+        });
+        this.elementsService.sendMessage(this.elements);
+        });
+        this.serverRequestService.getPLCs()
+        .subscribe(heroes => {
+          heroes.forEach(plc => {
+            this.plcs.push(Object.assign({}, {}, plc));
+          }); this.elementService.sendMessagePLC(this.plcs);
+        });
+    }
+
     ngOnInit(){
+      this.elements = new Array<Element>();
+      this.plcs = new Array<PLC>();
       this.color = new Color();
       this.settingsService.sendMessage(this.settings);
     }

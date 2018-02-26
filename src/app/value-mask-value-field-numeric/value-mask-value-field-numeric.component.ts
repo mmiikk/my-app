@@ -35,7 +35,7 @@ export class ValueMaskValueFieldNumericComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.checkDefault();
-    this.elementService.getColor();
+    this.elementService.getColor("Value Mask Field Numeric L 38");
   }
 
   checkDefault(): void{

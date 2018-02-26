@@ -4,6 +4,7 @@ import { Value } from './../value';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { PLC } from '../plc';
+import { Color } from '../color';
 import { MatTableDataSource } from '@angular/material';
 import { Mask } from '../mask';
 
@@ -38,6 +39,7 @@ export class ValueMaskComponent implements OnInit, OnChanges {
     this.checkValueType();
     this.dataSource = new MatTableDataSource<Mask>(this.value.Mask);
     this.clearSelected(this.value.Mask);
+    
   }
 
   ngOnInit() {
@@ -57,6 +59,14 @@ export class ValueMaskComponent implements OnInit, OnChanges {
       this.selectedMask = mask;
     else
       this.selectedMask = new Mask();
+
+    if(this.value.ID > 1000 && this.value.ID < 3000){
+      var color = new Color();
+      color.IntVal = this.selectedMask.Value;
+      console.log("value mas select send 1 ");
+      this.elementService.sendColor(color);
+      console.log("value mas select send 2");
+    }
   }
 
   onValueTypeChange(): void {

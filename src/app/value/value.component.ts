@@ -2,7 +2,7 @@ import { ValueService } from './../value.service';
 import { Font } from './../font';
 import { Color } from './../color';
 import { Element } from './../element';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ElementService } from '../element.service';
 
@@ -12,7 +12,7 @@ import { ElementService } from '../element.service';
   templateUrl: './value.component.html',
   styleUrls: ['./value.component.css']
 })
-export class ValueComponent implements OnInit {
+export class ValueComponent implements OnInit, OnChanges {
 
   valueType: string;
   element: Element;
@@ -52,17 +52,23 @@ export class ValueComponent implements OnInit {
     this.element.Font.Italic = !this.element.Font.Italic;
   }
 
+  ngOnChanges(){
+   
+  }
+
   onValueTypeChange(type: number) {
     switch (type.toString()){
       case '0':
         this.valueService.sendMessage(this.element.ValueID);
         this.elementService.sendColor(new Color());
+        console.log("color from value 0");
         break;
       case '1':
         this.valueService.sendMessage(this.element.FontColor);
         var color = new Color();
         color.IntVal = this.element.FontColor.Val;
         this.elementService.sendColor(color);
+        console.log("color from value 1");
       break;
       case '2':
         this.valueService.sendMessage(this.element.BackColor);
@@ -71,6 +77,7 @@ export class ValueComponent implements OnInit {
         color.calculateColorFromInt();
         this.elementService.sendColor(color);
         console.log(color);
+        console.log("color from value 2");
         break;
 
     }
