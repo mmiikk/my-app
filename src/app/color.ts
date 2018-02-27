@@ -17,4 +17,7 @@ export class Color{
         this.R = Math.round((parseInt(this.IntVal.toString()) >> 16) & 255);
         this.HexVal =this.rgbToHex();
     }
+    constructor(){
+        this.IntVal = "0";
+    }
 }

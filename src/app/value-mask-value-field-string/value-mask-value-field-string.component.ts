@@ -48,13 +48,21 @@ export class ValueMaskValueFieldStringComponent implements OnInit, OnChanges {
     if(this.default == true)
     {
       this.mask.MaskVal = '_';
-      this.mask.Value = '';
+      if(!(this.mask.ID > 1000 && this.mask.ID < 3000))
+        this.mask.Value = '';
     } else {
       this.mask.MaskVal = '0';
-      this.mask.Value = '';
+      if(!(this.mask.ID > 1000 && this.mask.ID < 3000))
+        this.mask.Value = '';
     }
     
   }
+
+  onColorChange(event): void{
+    this.mask.Value = event;  
+    console.log(event);
+  }
+
   sendMessage() {
  
   //  this.messageEvent.emit(this.value);

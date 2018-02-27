@@ -10,3 +10,5 @@
 </mat-form-field>
 
 <mat-slide-toggle [checked]="default" (change)="toggleDefault()">Default</mat-slide-toggle>
+
+<app-colorpicker [valueInt]="mask.Value" (change)="onColorChange($event);" *ngIf="value.ID > 1000 && value.ID < 3000"></app-colorpicker>

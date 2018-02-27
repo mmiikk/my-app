@@ -4,13 +4,17 @@ import { PLC } from './PLC';
 import { ElementsService } from './elements.service';
 import { SettingsService } from './settings.service';
 import { ServerRequestService } from './server-request.service';
-import { Component, ViewChild, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { SettingsComponent } from './settings/settings.component';
 import { Settings } from './settings';
 import { Color } from './color';
+import { Subscription } from 'rxjs/Subscription';
+import { Element } from './element';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -47,27 +51,27 @@ export class AppComponent implements OnInit {
         this.settings.noOfRowsInTable = 6;
       }
 
+    ngOnInit(){
+      this.elements = new Array<Element>();
+      this.plcs = new Array<PLC>();
+      this.color = new Color();
+      this.settingsService.sendMessage(this.settings);
+    }
+
     get(): void {
       this.serverRequestService.getHeroes()
-      .subscribe(data => {
-        data.forEach(el => {
-          this.elements.push(Object.assign({}, {}, el));
+      .subscribe(heroes => {
+        heroes.forEach(element => {
+          this.elements.push(Object.assign({}, {}, element));
         });
         this.elementsService.sendMessage(this.elements);
-        });
+       });
         this.serverRequestService.getPLCs()
         .subscribe(heroes => {
           heroes.forEach(plc => {
             this.plcs.push(Object.assign({}, {}, plc));
           }); this.elementService.sendMessagePLC(this.plcs);
         });
-    }
-
-    ngOnInit(){
-      this.elements = new Array<Element>();
-      this.plcs = new Array<PLC>();
-      this.color = new Color();
-      this.settingsService.sendMessage(this.settings);
     }
 
     close(reason: string) {
@@ -82,9 +86,7 @@ export class AppComponent implements OnInit {
         data: {settings: this.defaultSettings}
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      console.log(this.settings);
-      console.log(result);
+      
       if (result === true) {
         this.settings =  Object.assign({}, this.defaultSettings);
         this.settingsService.sendMessage(this.settings);

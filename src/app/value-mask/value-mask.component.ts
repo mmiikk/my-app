@@ -64,7 +64,7 @@ export class ValueMaskComponent implements OnInit, OnChanges {
       var color = new Color();
       color.IntVal = this.selectedMask.Value;
       console.log("value mas select send 1 ");
-      this.elementService.sendColor(color);
+    //  this.elementService.sendColor(color);
       console.log("value mas select send 2");
     }
   }

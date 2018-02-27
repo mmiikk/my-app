@@ -33,7 +33,10 @@ export class ElementService {
     this.messagePLC.next(this.PLCs);
   }
   getColor(request: string) {
-    console.log("request");
+    if(typeof this.color === "undefined")
+    {
+      this.color = new Color();
+    }
     this.messageColor.next(this.color);
   }
 }

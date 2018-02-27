@@ -5,3 +5,4 @@
       <input matInput placeholder="" [(ngModel)]="value.Val" [ngModelOptions]="{standalone: true}" (ngModelChange)="sendMessage()" (input)="onColorChange()">
     </mat-form-field>
 </form>
+<app-colorpicker [valueInt]="value.Val" (change)="onColorChange($event);" *ngIf="value.ID > 1000 && value.ID < 3000"></app-colorpicker>

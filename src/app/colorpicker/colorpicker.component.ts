@@ -1,5 +1,6 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges,  Input, Output, EventEmitter  } from '@angular/core';
 import { Color } from '../color';
+import { Value } from '../value';
 import { ElementService } from '../element.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -12,17 +13,26 @@ export class ColorpickerComponent implements OnInit, OnChanges {
 
   Colors: Color[];
   selectedColor: Color;
+  @Input() value: Value;
+  @Input() valueInt: number;
+  @Output() 
+  change: EventEmitter<number> = new EventEmitter<number>();
+
   subscriptionElement: Subscription;
 
   constructor(private elementService: ElementService) { 
-    this.subscriptionElement = elementService.messageColor$.subscribe(
+  //  this.selectedColor = new Color();
+  /*  this.subscriptionElement = elementService.messageColor$.subscribe(
       message => { this.selectedColor = message; this.selectedColor.calculateColorFromInt(); console.log(this.selectedColor);}
-    );
+    );*/
   }
 
   ngOnInit() {
-
-    //this.selectedColor = new Color();
+console.log('a');
+    this.selectedColor = new Color();
+    if(typeof this.valueInt !== "undefined")
+      this.selectedColor.IntVal = this.valueInt.toString();
+    this.selectedColor.calculateColorFromInt();
     const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
       const hex = x.toString(16)
       return hex.length === 1 ? '0' + hex : hex
@@ -50,20 +60,23 @@ export class ColorpickerComponent implements OnInit, OnChanges {
         color = new Color();
         color.IntVal = Math.round(i) * 65536 + Math.round(j) * 256 + Math.round(k);
         color.calculateColorFromInt();
-        
         this.Colors.push(color);
       }
     }
-    this.elementService.getColor("ColorPicker L 57");
   }
 
   ngOnChanges() {
-
+    this.selectedColor = new Color();
+    if(typeof this.valueInt !== "undefined")
+      this.selectedColor.IntVal = this.valueInt.toString();
+    this.selectedColor.calculateColorFromInt();
   }
 
   onSelectColor(color: Color): void{
     this.selectedColor = color;
-    this.elementService.sendColor(this.selectedColor);
+    this.valueInt = color.IntVal;
+    this.change.emit(parseInt(this.valueInt.toString());
+   // this.elementService.sendColor(this.selectedColor);
   }
 
   onTypeColor(): void{
@@ -73,6 +86,7 @@ export class ColorpickerComponent implements OnInit, OnChanges {
     color.calculateColorFromInt();
    
     this.selectedColor = color;
-    this.elementService.sendColor(this.selectedColor);
+    this.valueInt = color.IntVal;
+   // this.elementService.sendColor(this.selectedColor);
   }
 }
